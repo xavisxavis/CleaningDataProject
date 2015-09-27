@@ -22,16 +22,17 @@ subject_train<-read.table("./train/subject_train.txt")
 
 #Features
 features<-read.table("features.txt")
-features<-rename(features, c("V1"="Number", "V2"="Description"))
+names(features)[names(features)=="V1"] <- "Number"
+names(features)[names(features)=="V2"] <- "Description"
 namesForX <- features$Description
 
 #------------------Step 4-----------------#
 names(X_test)<-namesForX
 names(X_train)<-namesForX
-Y_test<-rename(Y_test, c("V1"="Activity"))
-Y_train<-rename(Y_train, c("V1"="Activity"))
-subject_test<-rename(subject_test, c("V1"="Subject"))
-subject_train<-rename(subject_train, c("V1"="Subject"))
+names(Y_test)[names(Y_test)=="V1"] <- "Activity"
+names(Y_train)[names(Y_train)=="V1"] <- "Activity"
+names(subject_test)[names(subject_test)=="V1"] <- "Subject"
+names(subject_train)[names(subject_train)=="V1"] <- "Subject"
 #------------------Step 4 end-----------------#
 
 #Combine test, train
